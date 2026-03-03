@@ -12,6 +12,8 @@
   var speedMultiplier = 1;
   var celestialBodies = [];   // { mesh, data, orbitGroup?, orbitAngle? }
   var orbitLines = [];
+  var ORBIT_LINE_HALF_WIDTH = 0.04;
+  var ORBIT_SEGMENTS = 128;
 
   // ── Data ─────────────────────────────────────────────────
   var SUN_DATA = {
@@ -193,7 +195,7 @@
       orbitGroup.add(mesh);
 
       // Orbit line
-      var orbitGeo = new THREE.RingGeometry(p.distance - 0.04, p.distance + 0.04, 128);
+      var orbitGeo = new THREE.RingGeometry(p.distance - ORBIT_LINE_HALF_WIDTH, p.distance + ORBIT_LINE_HALF_WIDTH, ORBIT_SEGMENTS);
       var orbitMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.08, side: THREE.DoubleSide });
       var orbitMesh = new THREE.Mesh(orbitGeo, orbitMat);
       orbitMesh.rotation.x = -Math.PI / 2;
@@ -312,18 +314,19 @@
       keys.forEach(function (key) {
         var div = document.createElement('div');
         div.className = 'stat';
-        div.innerHTML = '<div class="stat-label">' + escapeHtml(key) + '</div><div class="stat-value">' + escapeHtml(data.stats[key]) + '</div>';
+        var label = document.createElement('div');
+        label.className = 'stat-label';
+        label.textContent = key;
+        var value = document.createElement('div');
+        value.className = 'stat-value';
+        value.textContent = data.stats[key];
+        div.appendChild(label);
+        div.appendChild(value);
         statsContainer.appendChild(div);
       });
     }
 
     document.getElementById('info-panel').classList.add('visible');
-  }
-
-  function escapeHtml(text) {
-    var div = document.createElement('div');
-    div.appendChild(document.createTextNode(text));
-    return div.innerHTML;
   }
 
   // ── Animation Loop ───────────────────────────────────────
