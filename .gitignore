@@ -4,3 +4,7 @@ dist/
 *.log
 tmp/
 .vercel/
+lib/
+package.json
+package-lock.json
+test.html
