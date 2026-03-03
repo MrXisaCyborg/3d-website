@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmic Explorer – Interactive 3D Solar System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading">
+    <h2>Loading the Cosmos…</h2>
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Header -->
+  <div id="header">
+    <h1>🌌 Cosmic Explorer</h1>
+  </div>
+
+  <!-- Info Panel -->
+  <div id="info-panel">
+    <button type="button" id="close-panel" aria-label="Close panel">✕</button>
+    <h2 id="info-name">Planet</h2>
+    <div class="info-type" id="info-type">Planet</div>
+    <p id="info-desc">Description goes here.</p>
+    <div class="info-stats" id="info-stats"></div>
+  </div>
+
+  <!-- Controls Help -->
+  <div id="controls-help">
+    <p><span>Left-click + drag</span> — Rotate view</p>
+    <p><span>Scroll</span> — Zoom in / out</p>
+    <p><span>Right-click + drag</span> — Pan</p>
+    <p><span>Click object</span> — View details</p>
+  </div>
+
+  <!-- Speed Control -->
+  <div id="speed-control">
+    <label for="speed-slider">Speed</label>
+    <input type="range" id="speed-slider" min="0" max="5" step="0.1" value="1">
+    <span id="speed-value">1×</span>
+  </div>
+
+  <!-- Three.js via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
