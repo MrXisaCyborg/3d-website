@@ -490,7 +490,7 @@
     var colors = new Float32Array(count * 3);
     for (var i = 0; i < count; i++) {
       var angle = Math.random() * Math.PI * 2;
-      var dist = 24 + Math.random() * 5; // Between Mars (20) and Jupiter (30)
+      var dist = 23 + Math.random() * 6; // Between Mars and Jupiter orbits
       var y = (Math.random() - 0.5) * 1.5;
       positions[i * 3] = Math.cos(angle) * dist;
       positions[i * 3 + 1] = y;
