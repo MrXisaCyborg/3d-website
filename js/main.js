@@ -239,7 +239,7 @@
   function createExtraSatellites() {
     EXTRA_SATELLITES.forEach(function (s) {
       // Find parent planet mesh
-      var parent = celestialBodies.find(function (b) { return b.data === PLANETS[s.parentIndex]; });
+      var parent = celestialBodies.find(function (b) { return b.data.name === PLANETS[s.parentIndex].name; });
       if (!parent) return;
 
       var satOrbitGroup = new THREE.Group();
